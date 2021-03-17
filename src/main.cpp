@@ -1,5 +1,6 @@
 #include <iostream>
 #include "BazaTestu.hh"
+#include "Statystyka.hh"
 
 using namespace std;
 
@@ -31,16 +32,75 @@ int main(int argc, char **argv)
   cout << " Start testu arytmetyki zespolonej: " << argv[1] << endl;
   cout << endl;
 
-  WyrazenieZesp   WyrZ_PytanieTestowe;
-  
-  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytanieTestowe)) {
-    cout << " Czesc rzeczywista pierwszego argumentu: ";
-    cout << WyrZ_PytanieTestowe.Arg1.re << endl;
-  }
+  Staty Test;
+  WyrazenieZesp   WyrZ_PytTest;
+  LZespolona Odp;
+  double proc;
+  int i=0;
+  cout << "Prosze pamietac zeby nie dawac spacji miedzy cyfra a znakiem operacji" << endl << endl;
+  // WyrazenieZesp temp;
+  // cout << "Prosze wprowadzic wyrazenie zespolone: " << endl;
+  // WczytajWyrz ();
 
+  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytTest)) {
+    i=0;
+    // cout << "Podaj wynik operacji: (" << Wyswietl(WyrZ_PytTest.Arg1) << wyswietlSym(WyrZ_PytTest)  << Wyswietl(WyrZ_PytTest.Arg2) << "i)" << endl;
+    cout << "Podaj wynik operacji: ";
+    // WyswietlWyr(WyrZ_PytTest);
+    cout << WyrZ_PytTest;
+    WyrZ_PytTest.Wyn = Oblicz(WyrZ_PytTest);
+    while (WyrZ_PytTest.Wyn != Odp && i<3){
+      cout << "Twoja odpowiedz: ";
+      cin >> Odp;
+      
+      while(cin.fail() && i<3){
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cerr << "Blednie zapisana liczba zespolona" << endl;
+        if(i<3){
+        cout << "Ponownie wprowadz liczbe zespolona: ";
+        cin >> Odp;
+        i++;}
+        else{
+          cout << "Wykorzystales wszystkie szanse " << endl;
+          cout << "Wynik to: " << WyrZ_PytTest.Wyn << endl;
+          Test.neg++;
+        }
+      }
+        if(WyrZ_PytTest.Wyn == Odp){
+          cout << "Poprawna odpowiedz" << endl;
+          Test.popr +=1;
+          }
+        else {
+          cout << "Nieprawidłowy wynik " << endl;
+          cout << "Wynik to: " << WyrZ_PytTest.Wyn << endl;
+          Test.neg++;
+          i=3;}
+    }
+      //cout << WyrZ_PytTest.Odp << endl;
+      Test.lpyt +=1;
+
+      
+    }
+    Wynikkon(Test);
+    
+
+    
+    // proc = (Test.popr/(Test.lpyt))*100;
+    // cout << "Ilosc dobrych odpowiedzi: " << Test.popr << endl;
+    // cout << "Wynik procentowy poprawnych odpowiedzi: " << proc << "%" <<endl;
+
+    
+
+    // cout << WyrZ_PytTest.Wyn << endl;
+    
+    
+    
+  
   
   cout << endl;
-  cout << " Koniec testu" << endl;
+  cout << " Koniec testu." << endl;
   cout << endl;
+  // Statystyka(test);
 
 }

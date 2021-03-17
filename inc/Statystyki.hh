@@ -1,13 +1,17 @@
-#ifndef WYRAZENIEZESP_HH
-#define WYRAZENIEZESP_HH
+#ifndef STATYSTYKA_HH
+#define STATYSTYKA_HH
 
+#include "BazaTestu.hh"
 
+using namespace std;
 
-#include "LZespolona.hh"
-#include "WyrazenieZesp.hh"
+//Struktura statystyki koncowej 
+struct Staty{
+    double neg=0;
+    double popr=0;
+    double lpyt=0;
+};
 
-/*
- * Tu nalezy zdefiniowac funkcje, ktore definiuja model statystyki 
- */
+void Wynikkon(Staty zd);
 
 #endif
