@@ -1,10 +1,8 @@
 #include <iostream>
 #include "BazaTestu.hh"
-#include "Statystyka.hh"
+#include "Statystyki.hh"
 
 using namespace std;
-
-
 
 
 int main(int argc, char **argv)

@@ -18,6 +18,7 @@ struct  LZespolona {
   double   im;    /*! Pole repezentuje czesc urojona. */
 };
 
+//Takie tam
 
 /*
  * Dalej powinny pojawic sie zapowiedzi definicji przeciazen operatorow

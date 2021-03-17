@@ -1,5 +1,4 @@
-#include "Statystyka.hh"
-
+#include "Statystyki.hh"
 
 void Wynikkon (Staty zd){
 

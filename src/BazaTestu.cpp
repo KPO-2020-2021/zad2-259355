@@ -3,6 +3,7 @@
 #include <cassert>
 #include "BazaTestu.hh"
 
+
 using namespace std;
 
 /*

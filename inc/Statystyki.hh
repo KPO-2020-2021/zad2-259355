@@ -1,6 +1,7 @@
 #ifndef STATYSTYKA_HH
 #define STATYSTYKA_HH
 
+
 #include "BazaTestu.hh"
 
 using namespace std;
