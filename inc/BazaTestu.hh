@@ -2,7 +2,7 @@
 #define BAZATESTU_HH
 
 #include "WyrazenieZesp.hh"
-
+using namespace std;
 
 /*
  * Modeluje pojecie baze testu z zestawem pytan w tablicy

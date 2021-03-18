@@ -107,19 +107,19 @@ std::istream & operator >> (std::istream &stream, WyrazenieZesp &WyrZ){
 std::ostream & operator << (std::ostream &stream , const Operator & ope){
     switch (ope){
         case Op_Dodaj:
-        std::cout << " + ";
+        stream << " + ";
         break;
 
         case Op_Odejmij:
-        std::cout << " - ";
+        stream << " - ";
         break;
 
         case Op_Mnoz:
-        std::cout << " * ";
+        stream << " * ";
         break;
 
         case Op_Dziel:
-        std::cout << " / ";
+        stream << " / ";
         break;
     }
     return stream;
@@ -135,13 +135,13 @@ std::ostream & operator << (std::ostream &stream , const Operator & ope){
 //Przeciazenie operatora bitowego w lewo ktore pozwala wyswietlic cale wyrazenie zespolone
 std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos){
 
-    std::cout << cos.Arg1;
-    std::cout << cos.Op;
-    std::cout << cos.Arg2;
+    stream << cos.Arg1;
+    stream << cos.Op;
+    stream << cos.Arg2 << std::endl;
     // Wyswietl(WyrZ.Arg1);
     // wyswietlSym(WyrZ.Op);
     // Wyswietl(WyrZ.Arg2);
-    std::cout << " ="<< std::endl;
+    // stream << " ="<< std::endl;
     return stream;
 }
 

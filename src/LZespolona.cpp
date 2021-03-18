@@ -84,19 +84,32 @@ double Modul2(LZespolona Skl2){
 
 LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
 {
-  LZespolona  Wynik;
+  LZespolona  wynik;
   LZespolona  temp;
   Sprzezenie(Skl2);
 
   if(Skl2.im != 0 || Skl2.re != 0){
   temp.re = (Skl1.re * Skl2.re) + ((-1)*(Skl1.im * Skl2.im));
   temp.im = ((Skl1.re * Skl2.im) + (Skl2.re * Skl1.im));
-  Wynik.re = temp.re / Modul2(Skl2);
-  Wynik.im = temp.im / Modul2(Skl2);}
+  wynik.re = temp.re / Modul2(Skl2);
+  wynik.im = temp.im / Modul2(Skl2);}
   else {
     std::cerr << "Dzielenie przez zero" << std::endl;
   }
-  return Wynik;
+  return wynik;
+}
+
+LZespolona  operator / (LZespolona  Skl1,  double t){
+  LZespolona wynik;
+
+  if(t != 0){
+  wynik.re = Skl1.re/t;
+  wynik.im = Skl1.im/t;
+  return wynik;}
+  else{
+    std::cerr << "Dzielenie przez zero" << std::endl;
+  }
+  return Skl1;
 }
 
 //Przeciazenie operatora (!=) ktory porownuje dwie liczby zespolone i zwraca true jesli 
@@ -125,7 +138,7 @@ bool operator == (LZespolona  Skl1,  LZespolona  Skl2)
 //Ktory pozwala w odpowiedni sposob wyswietlic liczbe zespolona 
 //liczba zespolona zostaje wyswietlona wraz ze znakami za pomoca funkcji showpos
 std::ostream & operator<< (std::ostream &stream , const LZespolona & cos){
-    std::cout << "(" << cos.re << std::showpos << cos.im << "i)" << std::noshowpos;
+    stream << "(" << cos.re << std::showpos << cos.im << "i)" << std::noshowpos;
 return stream;
 } 
 

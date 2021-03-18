@@ -33,7 +33,6 @@ int main(int argc, char **argv)
   Staty Test;
   WyrazenieZesp   WyrZ_PytTest;
   LZespolona Odp;
-  double proc;
   int i=0;
   cout << "Prosze pamietac zeby nie dawac spacji miedzy cyfra a znakiem operacji" << endl << endl;
   // WyrazenieZesp temp;

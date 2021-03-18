@@ -1,7 +1,7 @@
 #ifndef WYRAZENIEZESP_HH
 #define WYRAZENIEZESP_HH
 
-
+using namespace std;
 #include <ostream>
 #include "LZespolona.hh"
 
