@@ -1,16 +1,16 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "./doctest/doctest.h"
-#include "BazaTestu.hh"
+#include "WyrazenieZesp.hh"
 #include <string>
 #include <sstream>
 #include <iostream>
 
 
-// std::string costam( std::ostream& str){
-//         std::ostringstream ss;
-//         ss << str.rdbuf();
-//         return ss.str();
-//     }
+std::string toString( std::ostream& str){
+        std::ostringstream ss;
+        ss << str.rdbuf();
+        return ss.str();
+    }
 
 // TEST_CASE("Test wyswietlania wyrazenia zespolonego"){
     
@@ -38,37 +38,63 @@ TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
         a.Arg1.re=2;
         a.Arg1.im=1;
         a.Arg2.re=1;
-        a.Arg2.re=2;
+        a.Arg2.im=2;
         a.Op = Op_Dodaj;
         a.Wyn = Oblicz(a);
-        LZespolona x;
-        x.re = 3;
-        x.im = 3;
-        CHECK(x == a.Wyn);
+        std::stringstream str;
+        str << a.Wyn;
+        std::string g = toString(str);
+        std::string temp;
+        temp = "(3+3i)";
+        CHECK(temp == g);
     }
     }
     if(i==1){
     SUBCASE("Odejmowanie"){
-        LZespolona x;
-        x.re = 1;
-        x.im = -1;
-        CHECK(x == a.Wyn);
+        a.Arg1.re=1;
+        a.Arg1.im=0;
+        a.Arg2.re=0;
+        a.Arg2.im=1;
+        a.Op = Op_Odejmij;
+        a.Wyn = Oblicz(a);
+        std::stringstream str;
+        str << a.Wyn;
+        std::string g = toString(str);
+        std::string temp;
+        temp = "(1-1i)";
+        CHECK(temp == g);
     }
     }
     if(i==2){
     SUBCASE("Mnozenie"){
-        LZespolona x;
-        x.re = 0;
-        x.im = 9;
-        CHECK(x == a.Wyn);
+        a.Arg1.re=3;
+        a.Arg1.im=0;
+        a.Arg2.re=0;
+        a.Arg2.im=3;
+        a.Op = Op_Mnoz;
+        a.Wyn = Oblicz(a);
+        std::stringstream str;
+        str << a.Wyn;
+        std::string g = toString(str);
+        std::string temp;
+        temp = "(0+9i)";
+        CHECK(temp == g);
     }
     }
     if(i==3){
     SUBCASE("Dzielenie"){
-        LZespolona x;
-        x.re = 4;
-        x.im = 8;
-        CHECK(x == a.Wyn);
+        a.Arg1.re=4;
+        a.Arg1.im=8;
+        a.Arg2.re=1;
+        a.Arg2.im=0;
+        a.Op = Op_Dziel;
+        a.Wyn = Oblicz(a);
+        std::stringstream str;
+        str << a.Wyn;
+        std::string g = toString(str);
+        std::string temp;
+        temp = "(4+8i)";
+        CHECK(temp == g);
     }
     }
     i++;}
