@@ -2,6 +2,8 @@
 #define LZESPOLONA_HH
 #include <iostream>
 #include <ctype.h>
+#include <cmath>
+
 
 using namespace std;
 /*!

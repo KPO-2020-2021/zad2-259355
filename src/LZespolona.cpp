@@ -2,7 +2,8 @@
 #include <cmath>
 #include <iostream>
 #include <ctype.h>
-
+#include <cmath>
+#define MIN_DIFF 0.0001
 
 
 /*!
@@ -94,7 +95,8 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
   wynik.re = temp.re / Modul2(Skl2);
   wynik.im = temp.im / Modul2(Skl2);}
   else {
-    std::cerr << "Dzielenie przez zero" << std::endl;
+    throw 
+    std::invalid_argument("Dzielenie przez zero");
   }
   return wynik;
 }
@@ -107,7 +109,8 @@ LZespolona  operator / (LZespolona  Skl1,  double t){
   wynik.im = Skl1.im/t;
   return wynik;}
   else{
-    std::cerr << "Dzielenie przez zero" << std::endl;
+    throw 
+    std::invalid_argument("Dzielenie przez zero");
   }
   return Skl1;
 }
@@ -127,7 +130,8 @@ bool operator != (LZespolona  Skl1,  LZespolona  Skl2)
 //liczby sa takie same 
 bool operator == (LZespolona  Skl1,  LZespolona  Skl2)
 {
-  if(Skl1.re == Skl2.re && Skl1.im == Skl2.im)
+
+  if((abs(Skl1.re - Skl2.re) <= MIN_DIFF) && (abs(Skl1.im - Skl2.im) <= MIN_DIFF))
   return true;
   else {
     return false;
