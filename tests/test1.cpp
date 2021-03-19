@@ -13,22 +13,22 @@ std::string toString( std::ostream& str){
         return ss.str();
     }
 
-// TEST_CASE("Test wyswietlania wyrazenia zespolonego"){
+TEST_CASE("Test wyswietlania wyrazenia zespolonego"){
     
-//     WyrazenieZesp x;
-//     x.Arg1.re = 2;
-//     x.Arg1.im = 2;
-//     x.Op = Op_Dodaj;
-//     x.Arg2.re = 1;
-//     x.Arg2.im = 1;
-//     std::stringstream stream;
-//     stream << x;
-//     std::string g = costam(stream);
-//     std::string str;
-//     str = "(2+2i) + (1+1i) =";
-//     CHECK(str == g);
+    WyrazenieZesp x;
+    x.Arg1.re = 2;
+    x.Arg1.im = 2;
+    x.Op = Op_Dodaj;
+    x.Arg2.re = 1;
+    x.Arg2.im = 1;
+    std::stringstream stream;
+    stream << x;
+    std::string g = toString(stream);
+    std::string str;
+    str = "(2+2i) + (1+1i) =";
+    CHECK(str == g);
 
-// }
+}
 TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
 
     int i = 0;

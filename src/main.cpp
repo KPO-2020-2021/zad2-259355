@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     // cout << "Podaj wynik operacji: (" << Wyswietl(WyrZ_PytTest.Arg1) << wyswietlSym(WyrZ_PytTest)  << Wyswietl(WyrZ_PytTest.Arg2) << "i)" << endl;
     cout << "Podaj wynik operacji: ";
     // WyswietlWyr(WyrZ_PytTest);
-    cout << WyrZ_PytTest;
+    cout << WyrZ_PytTest << endl;
     WyrZ_PytTest.Wyn = Oblicz(WyrZ_PytTest);
     while (WyrZ_PytTest.Wyn != Odp && i<3){
       cout << "Twoja odpowiedz: ";

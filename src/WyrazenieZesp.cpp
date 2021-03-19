@@ -137,11 +137,11 @@ std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos){
 
     stream << cos.Arg1;
     stream << cos.Op;
-    stream << cos.Arg2 << std::endl;
+    stream << cos.Arg2;
     // Wyswietl(WyrZ.Arg1);
     // wyswietlSym(WyrZ.Op);
     // Wyswietl(WyrZ.Arg2);
-    // stream << " ="<< std::endl;
+    stream << " =";
     return stream;
 }
 
