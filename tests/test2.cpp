@@ -175,18 +175,18 @@ TEST_CASE("Test LZespolona dzielenie przez skalar 1") {
     CHECK(x/t == y);
 }
 
-// TEST_CASE("Test LZespolona dzielenie przez skalar 2") {
-//     LZespolona x, y;
-//     double t = 3;
+TEST_CASE("Test LZespolona dzielenie przez skalar 2") {
+    LZespolona x, y;
+    double t = 3;
     
-//     x.re = 2;
-//     x.im = 2;
+    x.re = 2;
+    x.im = 2;
 
-//     y.re = 1;
-//     y.im = 1;
+    y.re = 0.66666;
+    y.im = 0.66666;
    
-//     CHECK(x/t == y);
-// }
+    CHECK(x/t == y);
+}
 
 TEST_CASE("Test LZespolona dzielenie przez skalar - zero") {
     LZespolona x;
