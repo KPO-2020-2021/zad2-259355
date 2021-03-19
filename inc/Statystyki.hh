@@ -8,11 +8,13 @@ using namespace std;
 
 //Struktura statystyki koncowej 
 struct Staty{
-    double neg=0;
-    double popr=0;
-    double lpyt=0;
+    double neg;
+    double popr;
+    double lpyt;
+    double proc;
 };
 
+double Procent(Staty zd);
 void Wynikkon(Staty zd);
 
 #endif

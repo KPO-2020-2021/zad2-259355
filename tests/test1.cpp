@@ -1,6 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "./doctest/doctest.h"
 #include "WyrazenieZesp.hh"
+#include "Statystyki.hh"
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -31,6 +32,7 @@ std::string toString( std::ostream& str){
 TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
 
     int i = 0;
+
     WyrazenieZesp a;
     while(i<4){
     if(i==0){
@@ -99,4 +101,14 @@ TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
     }
     i++;}
     
+}
+
+TEST_CASE("Test modulu statystyki czy procent odpowiedzi prawidlowych jest poprawny"){
+    Staty Test;
+    double proc2;
+    Test.popr = 5;
+    Test.lpyt = 10;
+    proc2 = Procent(Test);
+    double proc1 = 50;
+    CHECK(proc2 == proc1);
 }
