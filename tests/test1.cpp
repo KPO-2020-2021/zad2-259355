@@ -13,7 +13,7 @@ std::string toString( std::ostream& str){
         return ss.str();
     }
 
-TEST_CASE("Test wyswietlania wyrazenia zespolonego"){
+TEST_CASE("Test wyswietlania wyrazenia zespolonego (standardowe)"){
     
     WyrazenieZesp x;
     x.Arg1.re = 2;
@@ -21,14 +21,26 @@ TEST_CASE("Test wyswietlania wyrazenia zespolonego"){
     x.Op = Op_Dodaj;
     x.Arg2.re = 1;
     x.Arg2.im = 1;
-    std::stringstream stream;
+    std::ostringstream stream;
     stream << x;
-    std::string g = toString(stream);
-    std::string str;
-    str = "(2+2i) + (1+1i) =";
-    CHECK(str == g);
+    CHECK("(2.00+2.00i) + (1.00+1.00i) =" == stream.str());
 
 }
+
+TEST_CASE("Test wyswietlania wyrazenia zespolonego (zaokraglenie)"){
+    
+    WyrazenieZesp x;
+    x.Arg1.re = 2.335;
+    x.Arg1.im = 2.663;
+    x.Op = Op_Dodaj;
+    x.Arg2.re = 1.307;
+    x.Arg2.im = 1.186;
+    std::ostringstream stream;
+    stream << x;
+    CHECK("(2.33+2.66i) + (1.31+1.19i) =" == stream.str());
+
+}
+
 TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
 
     int i = 0;
@@ -43,12 +55,9 @@ TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
         a.Arg2.im=2;
         a.Op = Op_Dodaj;
         a.Wyn = Oblicz(a);
-        std::stringstream str;
-        str << a.Wyn;
-        std::string g = toString(str);
-        std::string temp;
-        temp = "(3+3i)";
-        CHECK(temp == g);
+        std::ostringstream stream;
+        stream << a.Wyn;
+        CHECK(("(3.00+3.00i)") == stream.str());
     }
     }
     if(i==1){
@@ -59,12 +68,9 @@ TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
         a.Arg2.im=1;
         a.Op = Op_Odejmij;
         a.Wyn = Oblicz(a);
-        std::stringstream str;
-        str << a.Wyn;
-        std::string g = toString(str);
-        std::string temp;
-        temp = "(1-1i)";
-        CHECK(temp == g);
+        std::ostringstream stream;
+        stream << a.Wyn;
+        CHECK("(1.00-1.00i)" == stream.str());
     }
     }
     if(i==2){
@@ -75,12 +81,9 @@ TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
         a.Arg2.im=3;
         a.Op = Op_Mnoz;
         a.Wyn = Oblicz(a);
-        std::stringstream str;
-        str << a.Wyn;
-        std::string g = toString(str);
-        std::string temp;
-        temp = "(0+9i)";
-        CHECK(temp == g);
+        std::ostringstream stream;
+        stream << a.Wyn;
+        CHECK("(0.00+9.00i)" == stream.str());
     }
     }
     if(i==3){
@@ -91,12 +94,9 @@ TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
         a.Arg2.im=0;
         a.Op = Op_Dziel;
         a.Wyn = Oblicz(a);
-        std::stringstream str;
-        str << a.Wyn;
-        std::string g = toString(str);
-        std::string temp;
-        temp = "(4+8i)";
-        CHECK(temp == g);
+        std::ostringstream stream;
+        stream << a.Wyn;
+        CHECK("(4.00+8.00i)" == stream.str());
     }
     }
     i++;}

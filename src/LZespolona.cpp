@@ -3,7 +3,8 @@
 #include <iostream>
 #include <ctype.h>
 #include <cmath>
-#define MIN_DIFF 0.0001
+#include <iomanip>
+#define MIN_DIFF 0.01
 
 
 /*!
@@ -142,7 +143,8 @@ bool operator == (LZespolona  Skl1,  LZespolona  Skl2)
 //Ktory pozwala w odpowiedni sposob wyswietlic liczbe zespolona 
 //liczba zespolona zostaje wyswietlona wraz ze znakami za pomoca funkcji showpos
 std::ostream & operator<< (std::ostream &stream , const LZespolona & cos){
-    stream << "(" << cos.re << std::showpos << cos.im << "i)" << std::noshowpos;
+    stream << std::setprecision(2);
+    stream << "(" << std::fixed << cos.re << std::showpos << cos.im << "i)" << std::noshowpos;
 return stream;
 } 
 
