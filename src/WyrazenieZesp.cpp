@@ -79,16 +79,16 @@ std::istream & operator >> (std::istream &stream, Operator &op){
     stream>>oper;
     switch(oper){
         case '+':
-            oper = Op_Dodaj;
+            op = Op_Dodaj;
             break;
         case '-':
-            oper = Op_Odejmij;
+            op = Op_Odejmij;
             break;
         case '*':
-            oper = Op_Mnoz;
+            op = Op_Mnoz;
             break;
         case '/':
-            oper = Op_Dziel;
+            op = Op_Dziel;
             break;
     }
     return stream;
@@ -97,8 +97,17 @@ std::istream & operator >> (std::istream &stream, Operator &op){
 // Przeciazenie operatora przesuniecia bitowego w prawo pozwalajaca wczytac wyrazenie zespolone
 std::istream & operator >> (std::istream &stream, WyrazenieZesp &WyrZ){
     stream >> WyrZ.Arg1;
+    if(!stream){
+    stream.setstate(std::ios::failbit);
+      return stream;}
     stream >> WyrZ.Op;
+    if(!stream){
+    stream.setstate(std::ios::failbit);
+      return stream;}
     stream >> WyrZ.Arg2;
+    if(!stream){
+    stream.setstate(std::ios::failbit);
+      return stream;}
     return stream;
 }
 
@@ -136,8 +145,17 @@ std::ostream & operator << (std::ostream &stream , const Operator & ope){
 std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos){
 
     stream << cos.Arg1;
+    if(!stream){
+    stream.setstate(std::ios::failbit);
+      return stream;}
     stream << cos.Op;
+    if(!stream){
+    stream.setstate(std::ios::failbit);
+      return stream;}
     stream << cos.Arg2;
+    if(!stream){
+    stream.setstate(std::ios::failbit);
+      return stream;}
     // Wyswietl(WyrZ.Arg1);
     // wyswietlSym(WyrZ.Op);
     // Wyswietl(WyrZ.Arg2);

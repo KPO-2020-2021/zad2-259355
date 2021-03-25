@@ -7,12 +7,6 @@
 #include <iostream>
 
 
-std::string toString( std::ostream& str){
-        std::ostringstream ss;
-        ss << str.rdbuf();
-        return ss.str();
-    }
-
 TEST_CASE("Test wyswietlania wyrazenia zespolonego (standardowe)"){
     
     WyrazenieZesp x;

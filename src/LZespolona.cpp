@@ -15,12 +15,12 @@
  * Zwraca:
  *    Sume dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona LZespolona::operator+ (LZespolona  &Skl1)
 {
   LZespolona  Wynik;
 
-  Wynik.re = Skl1.re + Skl2.re;
-  Wynik.im = Skl1.im + Skl2.im;
+  Wynik.re = Skl1.re + this->re;
+  Wynik.im = Skl1.im + this->im;
   return Wynik;
 }
 
@@ -32,12 +32,12 @@ LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2)
  * Zwraca:
  *    Roznice dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona LZespolona::operator- (LZespolona  &Skl1)
 {
   LZespolona  Wynik;
 
-  Wynik.re = Skl1.re - Skl2.re;
-  Wynik.im = Skl1.im - Skl2.im;
+  Wynik.re = this->re - Skl1.re;
+  Wynik.im = this->im - Skl1.im;
   return Wynik;
 }
 
@@ -49,12 +49,12 @@ LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2)
  * Zwraca:
  *    Iloczyn dwoch skladnikow przekazanych jako parametry.
  */
-LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona LZespolona::operator* (LZespolona  &Skl1)
 {
   LZespolona  Wynik;
 
-  Wynik.re = (Skl1.re * Skl2.re) + ((-1)*(Skl1.im * Skl2.im));
-  Wynik.im = ((Skl1.re * Skl2.im) + (Skl2.re * Skl1.im));
+  Wynik.re = (Skl1.re * this->re) + ((-1)*(Skl1.im * this->im));
+  Wynik.im = ((Skl1.re * this->im) + (this->re * Skl1.im));
   return Wynik;
 }
 
@@ -84,15 +84,15 @@ double Modul2(LZespolona Skl2){
  *    Iloraz dwoch skladnikow przekazanych jako parametry.
  */
 
-LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
+LZespolona LZespolona::operator/ (LZespolona  &Skl2)
 {
   LZespolona  wynik;
   LZespolona  temp;
   Sprzezenie(Skl2);
 
   if(Skl2.im != 0 || Skl2.re != 0){
-  temp.re = (Skl1.re * Skl2.re) + ((-1)*(Skl1.im * Skl2.im));
-  temp.im = ((Skl1.re * Skl2.im) + (Skl2.re * Skl1.im));
+  temp.re = (this->re * Skl2.re) + ((-1)*(this->im * Skl2.im));
+  temp.im = ((this->re * Skl2.im) + (Skl2.re * this->im));
   wynik.re = temp.re / Modul2(Skl2);
   wynik.im = temp.im / Modul2(Skl2);}
   else {
@@ -102,18 +102,18 @@ LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2)
   return wynik;
 }
 
-LZespolona  operator / (LZespolona  Skl1,  double t){
+LZespolona  LZespolona::operator / (double &t){
   LZespolona wynik;
 
   if(t != 0){
-  wynik.re = Skl1.re/t;
-  wynik.im = Skl1.im/t;
+  wynik.re = this->re/t;
+  wynik.im = this->im/t;
   return wynik;}
   else{
     throw 
     std::invalid_argument("Dzielenie przez zero");
   }
-  return Skl1;
+  return *this;
 }
 
 //Przeciazenie operatora (!=) ktory porownuje dwie liczby zespolone i zwraca true jesli 
@@ -144,7 +144,7 @@ bool operator == (LZespolona  Skl1,  LZespolona  Skl2)
 //liczba zespolona zostaje wyswietlona wraz ze znakami za pomoca funkcji showpos
 std::ostream & operator<< (std::ostream &stream , const LZespolona & cos){
     stream << std::setprecision(2);
-    stream << "(" << std::fixed << cos.re << std::showpos << cos.im << "i)" << std::noshowpos;
+    stream << "(" << std::fixed << cos.re << std::showpos << std::fixed << cos.im << "i)" << std::noshowpos;
 return stream;
 } 
 

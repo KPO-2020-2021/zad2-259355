@@ -11,11 +11,13 @@ using namespace std;
  * z bazy.
  */
 struct BazaTestu {
-  WyrazenieZesp  *wskTabTestu;   /* Wskaznik na tablice zawierajaca pytania testu */
+    WyrazenieZesp *wskTabTestu;
   unsigned int    IloscPytan;    /* Ilosc wszystkich pytan */
+  // std::ifstream PlikTest;
   unsigned int    IndeksPytania; /* Numer pytania, ktore ma byc pobrane jako nastepne */
 };
 
+void UstawTest( BazaTestu *wskBazaTestu, std::string sNazwaTestu, unsigned int IloscPytan );
 
 /*
  * Inicjalizuje test powiazany z dana nazwa.
@@ -24,8 +26,9 @@ bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char*  sNazwaTestu );
 /*
  * Udostepnia nastepne pytanie z bazy.
  */
+// bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu,  WyrazenieZesp &wskWyr );
 bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu,  WyrazenieZesp *wskWyr );
 
-
+// bool PobierzPytaniePlik(WyrazenieZesp *wskWyrazenie);
 
 #endif

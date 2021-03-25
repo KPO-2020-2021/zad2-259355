@@ -228,12 +228,7 @@ TEST_CASE("Test modulu z liczby zespolonej"){
 
     CHECK(z==y);
 }
-std::string toString( std::ostream& str){
 
-        std::ostringstream ss;
-        ss << str.rdbuf();
-        return ss.str();
-    }
 TEST_CASE("Test Wyświetlanie LZespolonej (standard)"){
 
     LZespolona x;
@@ -262,11 +257,61 @@ TEST_CASE("Test Wczytanie LZespolonej (standardowe) "){
     CHECK("(5.00+5.20i)" == stream.str());
 }
 TEST_CASE("Test Wczytanie LZespolonej (zaokraglenie) "){
-
     LZespolona x;
     std::istringstream in("(5.6666+5.3333i)");
     in >> x;
     std::ostringstream stream;
     stream << x;
     CHECK("(5.67+5.33i)" == stream.str());
+}
+
+TEST_CASE("Test Porownanie LZespolonej (dodawanie) gdy roznica jest mniejsza badz rowna poprawnie zapisanemu wynikowi "){
+    LZespolona x, y;
+    x.re = 5.37;
+    x.im = 3.83;
+    y.re = 5.38;
+    y.im = 3.84;
+    CHECK(y == x);
+}
+TEST_CASE("Test Porownanie LZespolonej (odejmowanie) gdy roznica jest mniejsza badz rowna poprawnie zapisanemu wynikowi "){
+    LZespolona x, y;
+    x.re = -5.37;
+    x.im = -3.83;
+    y.re = -5.38;
+    y.im = -3.84;
+    CHECK(y == x);
+}
+TEST_CASE("Test Porownanie LZespolonej (dodawanie) wraz z zaokragleniem (przed zaokragleniem wykonuje sie porownanie) "){
+    LZespolona x, y;
+    x.re = 5.379;
+    x.im = 3.831;
+    y.re = 5.386;
+    y.im = 3.843;
+    CHECK(y != x);
+}
+TEST_CASE("Test Porownanie LZespolonej (odejmowanie) wraz z zaokragleniem (przed zaokragleniem wykonuje sie porownanie)"){
+    LZespolona x, y;
+    x.re = -5.376;
+    x.im = -3.836;
+    y.re = -5.383;
+    y.im = -3.847;
+    CHECK(y != x);
+}
+
+TEST_CASE("Test Porownanie LZespolonej (dodawanie) wraz z zaokragleniem "){
+    LZespolona x, y;
+    x.re = 5.379;
+    x.im = 3.834;
+    y.re = 5.386;
+    y.im = 3.843;
+    CHECK(y == x);
+}
+
+TEST_CASE("Test Porownanie LZespolonej (odejmowanie) wraz z zaokragleniem "){
+    LZespolona x, y;
+    x.re = -5.376;
+    x.im = -3.837;
+    y.re = -5.383;
+    y.im = -3.846;
+    CHECK(y == x);
 }

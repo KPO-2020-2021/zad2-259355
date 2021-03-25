@@ -2,6 +2,8 @@
 #include <cstring>
 #include <cassert>
 #include "BazaTestu.hh"
+#include <fstream>
+#include <sstream>
 
 
 using namespace std;
@@ -55,7 +57,12 @@ void UstawTest( BazaTestu *wskBazaTestu, WyrazenieZesp *wskTabTestu, unsigned in
   wskBazaTestu->IloscPytan = IloscPytan;
   wskBazaTestu->IndeksPytania = 0;
 }
-
+// void UstawTest( BazaTestu *wskBazaTestu, std::string sNazwaTestu, unsigned int IloscPytan )
+// {
+//   wskBazaTestu->PlikTest.open(sNazwaTestu, std::ifstream::in);
+//   wskBazaTestu->IloscPytan = IloscPytan;
+//   wskBazaTestu->IndeksPytania = 0;
+// }
 
 
 
@@ -80,11 +87,16 @@ void UstawTest( BazaTestu *wskBazaTestu, WyrazenieZesp *wskTabTestu, unsigned in
  */
 bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char *sNazwaTestu )
 {
+  fstream uchwyt;
   if (!strcmp(sNazwaTestu,"latwy")) {
+    // UstawTest(wskBazaTestu, "latwy.dat", 4);
+    // return true;
     UstawTest(wskBazaTestu,TestLatwy,sizeof(TestLatwy)/sizeof(WyrazenieZesp));
     return true;
   }
   else if (!strcmp(sNazwaTestu,"trudny")) {
+    // UstawTest(wskBazaTestu, "trudny.dat", 4);
+    // return true;    
     UstawTest(wskBazaTestu,TestTrudny,sizeof(TestTrudny)/sizeof(WyrazenieZesp));
     return true;
   }
@@ -116,6 +128,15 @@ bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char *sNazwaTestu )
  *              przypisane nowe wyrazenie zespolone z bazy,
  *       false - w przypadku przeciwnym.
  */
+// bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu, WyrazenieZesp &wskWyrazenie )
+// {
+//   if (wskBazaTestu->IndeksPytania >= wskBazaTestu->IloscPytan) return false;
+
+//   wskBazaTestu->PlikTest >> wskWyrazenie;
+//   ++wskBazaTestu->IndeksPytania;
+//   return true;
+// }
+
 bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu, WyrazenieZesp *wskWyrazenie )
 {
   if (wskBazaTestu->IndeksPytania >= wskBazaTestu->IloscPytan) return false;
@@ -124,3 +145,13 @@ bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu, WyrazenieZesp *wskWyrazeni
   ++wskBazaTestu->IndeksPytania;
   return true;
 }
+// bool PobierzPytaniePlik(WyrazenieZesp *wskWyrazenie){
+//   fstream uchwyt;
+//   string linia;
+//   getline(uchwyt, linia);
+//       std::istringstream in(linia);
+//       in >> *wskWyrazenie;
+//   if(linia == ""){
+//     uchwyt.close();}
+//   return true;
+// }

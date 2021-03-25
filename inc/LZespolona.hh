@@ -16,9 +16,15 @@ using namespace std;
 /*!
  * Modeluje pojecie liczby zespolonej
  */
-struct  LZespolona {
+class  LZespolona { 
+  public:
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
+  LZespolona  operator + (LZespolona  &Skl1);
+  LZespolona  operator - (LZespolona  &Skl1);
+  LZespolona  operator * (LZespolona  &Skl1); 
+  LZespolona  operator / (LZespolona  &Skl1);
+  LZespolona  operator / (double &t);
 };
 
 //Takie tam
@@ -28,11 +34,11 @@ struct  LZespolona {
  */
 
 //Przeciazenia operatorow (+,-,*,/) oraz (!=,==)
-LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2); 
-LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2);
-LZespolona  operator / (LZespolona  Skl1,  double t);
+// LZespolona  operator + (LZespolona  Skl1,  LZespolona  Skl2);
+// LZespolona  operator - (LZespolona  Skl1,  LZespolona  Skl2);
+// LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2); 
+// LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2);
+// LZespolona  operator / (LZespolona  Skl1,  double t);
 LZespolona Sprzezenie(LZespolona &Skl2);
 double Modul2(LZespolona Skl2);
 bool operator != (LZespolona  Skl1,  LZespolona  Skl2);

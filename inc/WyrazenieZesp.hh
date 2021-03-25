@@ -35,7 +35,7 @@ struct WyrazenieZesp {
 //Pozwalajace wyswietlic operator miedzy liczbami zespolonymi oraz cale wyrazenie zespolone 
 std::ostream & operator<< (std::ostream &stream , const Operator & ope);
 std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos);
-std::istream & operator >> (std::istream &stream, Operator &op);
+std::istream & operator >> (std::istream &stream, Operator &oper);
 std::istream & operator >> (std::istream &stream, WyrazenieZesp &WyrZ);
 WyrazenieZesp WczytajWyrz ();
 Operator WczytajWyrZsym ();
