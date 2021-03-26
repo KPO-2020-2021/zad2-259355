@@ -88,6 +88,19 @@ TEST_CASE("Test LZespolona operator dodawania (0.0 + 0.0i) "){
     CHECK(x+y==t);
 }
 
+TEST_CASE("Test LZespolona operator dodawania (0.009 + 0.004i) "){
+    LZespolona x, y, t;
+    x.re = 2;
+    x.im = 2;
+
+    y.re = 0.009;
+    y.im = 0.004;
+
+    t.re =2.01;
+    t.im =2.00;
+    CHECK(x+y==t);
+}
+
 TEST_CASE("Test LZespolona operator odejmowania (0+0i) "){
     LZespolona x, y, t;
     x.re = 2;
@@ -100,6 +113,20 @@ TEST_CASE("Test LZespolona operator odejmowania (0+0i) "){
     t.im =2;
     CHECK(x-y==t);
 }
+
+TEST_CASE("Test LZespolona operator odejmowania (0.005+0.006) "){
+    LZespolona x, y, t;
+    x.re = 2;
+    x.im = 2;
+
+    y.re = 0.005;
+    y.im = 0.006;
+
+    t.re =2;
+    t.im =1.99;
+    CHECK(x-y==t);
+}
+
 TEST_CASE("Test LZespolona operator odejmowania (0.0+0.0i) "){
     LZespolona x, y, t;
     x.re = 2;
@@ -125,6 +152,20 @@ TEST_CASE("Test LZespolona operator mnozenia przez (0+0i) "){
     t.im =0;
     CHECK(x*y==t);
 }
+
+TEST_CASE("Test LZespolona operator mnozenia przez przybliżanie (1.789+0i) "){
+    LZespolona x, y, t;
+    x.re = 2;
+    x.im = 5;
+
+    y.re = 1.789;
+    y.im = 0;
+
+    t.re =3.58;
+    t.im =8.94;
+    CHECK(x*y==t);
+}
+
 TEST_CASE("Test LZespolona operator mnozenia przez (1+0i) "){
     LZespolona x, y, t;
     x.re = 2;

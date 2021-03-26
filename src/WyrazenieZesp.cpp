@@ -96,17 +96,24 @@ std::istream & operator >> (std::istream &stream, Operator &op){
 
 // Przeciazenie operatora przesuniecia bitowego w prawo pozwalajaca wczytac wyrazenie zespolone
 std::istream & operator >> (std::istream &stream, WyrazenieZesp &WyrZ){
+    //Po wczytaniu do strumienia danych za kazdym razem sprawdzamy czy wszystko poprawnie sie wczytalo
     stream >> WyrZ.Arg1;
     if(!stream){
     stream.setstate(std::ios::failbit);
+    throw 
+    std::invalid_argument("Blednie wczytana 1 liczba zespolona");
       return stream;}
     stream >> WyrZ.Op;
     if(!stream){
     stream.setstate(std::ios::failbit);
+    throw 
+    std::invalid_argument("Blednie wczytany operator");
       return stream;}
     stream >> WyrZ.Arg2;
     if(!stream){
     stream.setstate(std::ios::failbit);
+    throw 
+    std::invalid_argument("Blednie wczytana 2 liczba zespolona");
       return stream;}
     return stream;
 }
@@ -143,18 +150,25 @@ std::ostream & operator << (std::ostream &stream , const Operator & ope){
 
 //Przeciazenie operatora bitowego w lewo ktore pozwala wyswietlic cale wyrazenie zespolone
 std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos){
+    //Po wczytaniu do strumienia danych za kazdym razem sprawdzamy czy wszystko poprawnie sie wczytalo
 
     stream << cos.Arg1;
     if(!stream){
     stream.setstate(std::ios::failbit);
+    throw 
+    std::invalid_argument("Blednie wyswietlony 1 liczba zespolona");
       return stream;}
     stream << cos.Op;
     if(!stream){
     stream.setstate(std::ios::failbit);
+    throw 
+    std::invalid_argument("blednie wyswietlony operator");
       return stream;}
     stream << cos.Arg2;
     if(!stream){
     stream.setstate(std::ios::failbit);
+    throw 
+    std::invalid_argument("Blednie wyswietlona 2 liczba zespolona");
       return stream;}
     // Wyswietl(WyrZ.Arg1);
     // wyswietlSym(WyrZ.Op);

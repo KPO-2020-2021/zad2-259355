@@ -25,6 +25,14 @@ class  LZespolona {
   LZespolona  operator * (LZespolona  &Skl1); 
   LZespolona  operator / (LZespolona  &Skl1);
   LZespolona  operator / (double &t);
+  friend bool operator != (LZespolona  Skl1,  LZespolona  Skl2);
+  friend bool operator == (LZespolona  Skl1,  LZespolona  Skl2);
+  friend std::ostream & operator<< (std::ostream & pom , const LZespolona & cos);
+  friend std::istream & operator>> (std::istream &pom,  LZespolona & cos);
+  friend LZespolona Sprzezenie(LZespolona &Skl2);
+  friend double Modul2(LZespolona Skl2);
+  friend bool compare(LZespolona tmp);
+
 };
 
 //Takie tam
@@ -39,16 +47,16 @@ class  LZespolona {
 // LZespolona  operator * (LZespolona  Skl1,  LZespolona  Skl2); 
 // LZespolona  operator / (LZespolona  Skl1,  LZespolona  Skl2);
 // LZespolona  operator / (LZespolona  Skl1,  double t);
-LZespolona Sprzezenie(LZespolona &Skl2);
-double Modul2(LZespolona Skl2);
-bool operator != (LZespolona  Skl1,  LZespolona  Skl2);
-bool operator == (LZespolona  Skl1,  LZespolona  Skl2);
+// LZespolona Sprzezenie(LZespolona &Skl2);
+// double Modul2(LZespolona Skl2);
+// bool operator != (LZespolona  Skl1,  LZespolona  Skl2);
+// bool operator == (LZespolona  Skl1,  LZespolona  Skl2);
 LZespolona Wczytaj();
-bool compare(LZespolona tmp);
+// bool compare(LZespolona tmp);
 //Przeciazenia operatorow przesuniec bitowych w prawo i lewo pozwalajace wyswietlic liczbe zespolona 
 //Oraz pozwalajace wczytac z klawiatury liczbe zespolona 
-std::ostream & operator<< (std::ostream & pom , const LZespolona & cos);
-std::istream & operator>> (std::istream &pom,  LZespolona & cos);
+// std::ostream & operator<< (std::ostream & pom , const LZespolona & cos);
+// std::istream & operator>> (std::istream &pom,  LZespolona & cos);
 
 
 #endif

@@ -5,7 +5,7 @@ void Wynikkon (Staty zd){
     
     cout << "Ilosc dobrych odpowiedzi: " << zd.popr << endl;
     cout << "Ilosc neagtywnych odpowiedzi: " << zd.neg << endl;
-    cout << "Wynik procentowy poprawnych odpowiedzi: " << zd.proc << "%" <<endl;
+    cout << "Wynik procentowy poprawnych odpowiedzi: " << Procent(zd) << "%" <<endl;
 
 }
 

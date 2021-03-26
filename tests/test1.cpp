@@ -21,6 +21,34 @@ TEST_CASE("Test wyswietlania wyrazenia zespolonego (standardowe)"){
 
 }
 
+TEST_CASE("Test Wczytanie LZespolonej (standardowe) "){
+
+    WyrazenieZesp x;
+    std::istringstream in("(5+5.20i) - (3+3i)");
+    in >> x;
+    std::ostringstream stream;
+    stream << x;
+    CHECK("(5.00+5.20i) - (3.00+3.00i) =" == stream.str());
+}
+
+TEST_CASE("Test Wczytanie LZespolonej (zaokraglone) "){
+
+    WyrazenieZesp x;
+    std::istringstream in("(5.379+5.20i) * (3.809+3.73i)");
+    in >> x;
+    std::ostringstream stream;
+    stream << x;
+    CHECK("(5.38+5.20i) * (3.81+3.73i) =" == stream.str());
+}
+
+TEST_CASE("Test Błedne Wczytanie LZespolonej (bledny operator) "){
+
+    WyrazenieZesp x;
+    std::istringstream in("(5+5.20i) & (3+3i)");
+    in >> x;
+    WARN_THROWS(in >> x);
+}
+
 TEST_CASE("Test wyswietlania wyrazenia zespolonego (zaokraglenie)"){
     
     WyrazenieZesp x;
