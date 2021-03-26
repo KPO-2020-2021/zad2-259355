@@ -3,6 +3,7 @@
 #include "Statystyki.hh"
 #include <sstream>
 #include <limits>
+#include <fstream>
 
 
 using namespace std;
@@ -46,11 +47,17 @@ int main(int argc, char **argv)
     // WyrazenieZesp x;
     
     // int y=0;
-    
-
+std::ifstream plik("/home/adam/Programowanie_Obiektowe/zad2-259355/src/latwe.dat");
+// plik >> WyrZ_PytTest;
+// cout << x << endl;
 // while (PobierzNastpnePytanie(&BazaT, &x)) {
-  while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytTest)) {
+  // while (PobierzNastpnePytanie(&BazaT,&WyrZ_PytTest)) {
+    while (!plik.eof()) {
     i=0;
+    // std::ifstream plik("/home/adam/Programowanie_Obiektowe/zad2-259355/src");
+    // plik >> WyrZ_PytTest;
+    // cout << WyrZ_PytTest.z << endl;
+    plik >> WyrZ_PytTest;
     cout << "Podaj wynik operacji: ";
     cout << WyrZ_PytTest << endl;
     WyrZ_PytTest.Wyn = Oblicz(WyrZ_PytTest);
@@ -84,6 +91,7 @@ int main(int argc, char **argv)
     }
     // cout << WyrZ_PytTest.Odp << endl;
     Test.lpyt +=1;
+    // WyrZ_PytTest.z++;
   }
     Wynikkon(Test);
 

@@ -1,7 +1,8 @@
 #include "WyrazenieZesp.hh"
 #include <iostream>
-
-
+#include <fstream>
+#include <sstream>
+#include <string>
 
 /*
  * Tu nalezy zdefiniowac funkcje, ktorych zapowiedzi znajduja sie
@@ -90,6 +91,7 @@ std::istream & operator >> (std::istream &stream, Operator &op){
         case '/':
             op = Op_Dziel;
             break;
+        
     }
     return stream;
 }
@@ -177,8 +179,25 @@ std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos){
     return stream;
 }
 
-
-
-
+std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ){
+    string linia;
+    // int i=0;
+    std::getline(stream, linia);
+    std::istringstream in(linia);
+    in >> WyrZ;
+    // while(!stream.eof()){
+    //     if(i==WyrZ.z){
+    //         std::getline(stream, linia);
+    //         cout << WyrZ.z << endl;
+    //         std::istringstream in(linia);
+    //         in >> WyrZ;
+    //         // cout << linia << endl;
+    //         break;
+    //     }
+        
+    //     i++;
+    // }
+    return stream;
+}
 
 
