@@ -78,6 +78,7 @@ std::istream & operator >> (std::istream &stream, Operator &op){
     
     char oper;
     stream>>oper;
+    if (oper == '+' || oper == '-' || oper == '*' || oper == '/'){
     switch(oper){
         case '+':
             op = Op_Dodaj;
@@ -90,8 +91,10 @@ std::istream & operator >> (std::istream &stream, Operator &op){
             break;
         case '/':
             op = Op_Dziel;
-            break;
-        
+            break;}  
+    }
+    else{
+    stream.setstate(std::ios::failbit);
     }
     return stream;
 }
@@ -103,19 +106,19 @@ std::istream & operator >> (std::istream &stream, WyrazenieZesp &WyrZ){
     if(!stream){
     stream.setstate(std::ios::failbit);
     throw 
-    std::invalid_argument("Blednie wczytana 1 liczba zespolona");
+    std::runtime_error("Blednie wczytana 1 liczba zespolona");
       return stream;}
     stream >> WyrZ.Op;
     if(!stream){
     stream.setstate(std::ios::failbit);
     throw 
-    std::invalid_argument("Blednie wczytany operator");
+    std::runtime_error("Blednie wczytany operator");
       return stream;}
     stream >> WyrZ.Arg2;
     if(!stream){
     stream.setstate(std::ios::failbit);
     throw 
-    std::invalid_argument("Blednie wczytana 2 liczba zespolona");
+    std::runtime_error("Blednie wczytana 2 liczba zespolona");
       return stream;}
     return stream;
 }

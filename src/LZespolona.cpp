@@ -142,9 +142,27 @@ bool operator == (LZespolona  Skl1,  LZespolona  Skl2)
 //Przeciazenie operatora przesuniecia bitowego w lewo 
 //Ktory pozwala w odpowiedni sposob wyswietlic liczbe zespolona 
 //liczba zespolona zostaje wyswietlona wraz ze znakami za pomoca funkcji showpos
+//Przeciazenie zostalo ulepszone o ukrywanie cyfr roznych od zera 
 std::ostream & operator<< (std::ostream &stream , const LZespolona & cos){
     stream << std::setprecision(2);
+    if(cos.re == 0 && cos.im != 0){
+      stream << "("  << std::fixed << cos.im << "i)" << std::noshowpos;
+    }
+    else if(cos.im == 0 && cos.re !=0){
+      stream << "(" << std::fixed << cos.re << std::showpos << ")" << std::noshowpos;
+    }
+    else if (cos.im == 0 && cos.re ==0){
+      stream << cos.re;
+    }
+    else if(cos.im == 1 && cos.re != 0){
+      stream << "(" << std::fixed << cos.re << std::showpos << "+i)" << std::noshowpos;
+    }
+    else if(cos.im == -1 && cos.re != 0){
+      stream << "(" << std::fixed << cos.re << std::showpos << "-i)" << std::noshowpos;
+    }
+    else{
     stream << "(" << std::fixed << cos.re << std::showpos << std::fixed << cos.im << "i)" << std::noshowpos;
+    }
 return stream;
 } 
 

@@ -17,7 +17,7 @@ TEST_CASE("Test wyswietlania wyrazenia zespolonego (standardowe)"){
     x.Arg2.im = 1;
     std::ostringstream stream;
     stream << x;
-    CHECK("(2.00+2.00i) + (1.00+1.00i) =" == stream.str());
+    CHECK("(2.00+2.00i) + (1.00+i) =" == stream.str());
 
 }
 
@@ -41,13 +41,13 @@ TEST_CASE("Test Wczytanie LZespolonej (zaokraglone) "){
     CHECK("(5.38+5.20i) * (3.81+3.73i) =" == stream.str());
 }
 
-TEST_CASE("Test Błedne Wczytanie LZespolonej (bledny operator) "){
+// TEST_CASE("Test Błedne Wczytanie LZespolonej (bledny operator) "){
 
-    WyrazenieZesp x;
-    std::istringstream in("(5+5.20i) & (3+3i)");
-    in >> x;
-    WARN_THROWS(in >> x);
-}
+//     WyrazenieZesp x;
+//     std::istringstream in("(5+5.20i) & (3+3i)");
+//     in >> x;
+//     WARN_THROWS(in >> x);
+// }
 
 TEST_CASE("Test wyswietlania wyrazenia zespolonego (zaokraglenie)"){
     
@@ -92,7 +92,7 @@ TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
         a.Wyn = Oblicz(a);
         std::ostringstream stream;
         stream << a.Wyn;
-        CHECK("(1.00-1.00i)" == stream.str());
+        CHECK("(1.00-i)" == stream.str());
     }
     }
     if(i==2){
@@ -105,7 +105,7 @@ TEST_CASE("Test wyniki dla poszczególnych wyników wyrazenia zespolonego"){
         a.Wyn = Oblicz(a);
         std::ostringstream stream;
         stream << a.Wyn;
-        CHECK("(0.00+9.00i)" == stream.str());
+        CHECK("(9.00i)" == stream.str());
     }
     }
     if(i==3){
