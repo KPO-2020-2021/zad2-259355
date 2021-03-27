@@ -29,7 +29,7 @@ ${OBJ}/LZespolona.o: src/LZespolona.cpp inc/LZespolona.hh
 	g++ -c ${FLAGS} -o ${OBJ}/LZespolona.o src/LZespolona.cpp
 
 ${OBJ}/BazaTestu.o: src/BazaTestu.cpp inc/BazaTestu.hh inc/WyrazenieZesp.hh\
-                       inc/LZespolona.hh
+                       inc/LZespolona.hh inc/Statystyki.hh
 	g++ -c ${FLAGS} -o ${OBJ}/BazaTestu.o src/BazaTestu.cpp
 
 ${OBJ}/WyrazenieZesp.o: src/WyrazenieZesp.cpp inc/WyrazenieZesp.hh\

@@ -175,31 +175,18 @@ std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos){
     throw 
     std::invalid_argument("Blednie wyswietlona 2 liczba zespolona");
       return stream;}
-    // Wyswietl(WyrZ.Arg1);
-    // wyswietlSym(WyrZ.Op);
-    // Wyswietl(WyrZ.Arg2);
     stream << " =";
     return stream;
 }
 
+//Przeciazenie bitowe przesuniecia w prawo dla wczytywania wyrazenia zespolonego z pliku 
 std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ){
     string linia;
-    // int i=0;
+    //Pobieranie po kolei linii z pliku oraz wczytanie ich jako wyrazenie zespolone
     std::getline(stream, linia);
     std::istringstream in(linia);
     in >> WyrZ;
-    // while(!stream.eof()){
-    //     if(i==WyrZ.z){
-    //         std::getline(stream, linia);
-    //         cout << WyrZ.z << endl;
-    //         std::istringstream in(linia);
-    //         in >> WyrZ;
-    //         // cout << linia << endl;
-    //         break;
-    //     }
-        
-    //     i++;
-    // }
+    
     return stream;
 }
 

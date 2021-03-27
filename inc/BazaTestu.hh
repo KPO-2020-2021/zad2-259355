@@ -2,6 +2,7 @@
 #define BAZATESTU_HH
 
 #include "WyrazenieZesp.hh"
+#include "Statystyki.hh"
 using namespace std;
 
 /*
@@ -30,5 +31,6 @@ bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char*  sNazwaTestu );
 bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu,  WyrazenieZesp *wskWyr );
 
 // bool PobierzPytaniePlik(WyrazenieZesp *wskWyrazenie);
-
+string wybortestu(string wybor);
+void tescik(WyrazenieZesp WyrZ_PytTest, Staty &Test);
 #endif

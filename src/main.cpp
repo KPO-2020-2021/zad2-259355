@@ -9,51 +9,6 @@
 
 using namespace std;
 
-void tescik(WyrazenieZesp WyrZ_PytTest, Staty &Test) {
-  LZespolona Odp;
-  int i=0;
-    while (WyrZ_PytTest.Wyn != Odp && i<3){
-      cout << "Twoja odpowiedz: ";
-      cin >> Odp;
-      while(cin.fail() && i<3){
-        cin.clear();
-        cin.ignore(10000, '\n');
-        cerr << "Blednie zapisana liczba zespolona" << endl;
-        if(i<2){
-        cout << "Ponownie wprowadz liczbe zespolona: ";
-        cin >> Odp;
-        i++;}
-        else{
-          cout << "Wykorzystales wszystkie szanse " << endl;
-          // cout << "Wynik to: " << WyrZ_PytTest.Wyn << endl;
-          // Test.neg++;
-        }
-      }
-        if(WyrZ_PytTest.Wyn == Odp){
-          cout << "Poprawna odpowiedz" << endl;
-          Test.popr +=1;
-          }
-        else {
-          cout << "Nieprawidłowy wynik " << endl;
-          cout << "Wynik to: " << WyrZ_PytTest.Wyn << endl;
-          Test.neg++;
-          i=3;}
-    }
-  }
-
-string wybortestu(string wybor){
-  if(wybor == "latwy"){
-    string testl;
-    testl = "/home/adam/Programowanie_Obiektowe/zad2-259355/src/latwe.dat";
-    return testl;
-  }
-  else if (wybor == "trudny"){
-    string testt;
-    testt = "/home/adam/Programowanie_Obiektowe/zad2-259355/src/trudne.dat";
-    return testt;
-  }
-  return 0;
-}
 
 int main(int argc, char **argv)
 {
@@ -71,7 +26,7 @@ int main(int argc, char **argv)
   cout << "Prosze wybrac rodzaj testu z pliku (wpisz 'plik') badz z bazy (wpisz 'baza')" << endl;
   cin >> wybortes;
 
-
+  //Odpowiedni wybor testu z pliku badz bazy (latwy czy trudny)
   if(wybortes == "baza"){
   BazaTestu   BazaT = { nullptr, 0, 0 };
 
@@ -110,13 +65,15 @@ int main(int argc, char **argv)
   std::cout << "prosze wpisywac pelna liczbe zespolona np. (0+0i) brak ktorejs z czesci spowoduje blad" << endl << endl;
   std::ifstream plik(wybor);
   while (!plik.eof()) {
+    //Gdy pojawi sie niespodziewany blad w ktoryms z wyrazen przechwytujemy go dajemy odpowiedni komunikat 
+    //I pomijamy bledne pytanie nie konczac dzialania programu 
     try{
       plik >> WyrZ_PytTest;
       cout << "Podaj wynik operacji: ";
       cout << WyrZ_PytTest << endl;
     }
     catch( std::runtime_error &e){
-      cout << "invalid argument: " << e.what() << " idziemy dalej" << endl;
+      cerr << "invalid argument: " << e.what() << " idziemy dalej" << endl;
       continue;
     }
     WyrZ_PytTest.Wyn = Oblicz(WyrZ_PytTest);

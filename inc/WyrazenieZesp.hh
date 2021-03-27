@@ -20,12 +20,12 @@ struct WyrazenieZesp {
   Operator     Op;     // Opertor wyrazenia arytmetycznego
   LZespolona   Arg2;   // Drugi argument wyrazenia arytmetycznego
   LZespolona   Wyn;    // Zmienna w ktorej przechowujemy wynik wyrazenia zespolonego
-  // int z=0; //licznik
-  //Przeciazenia operatorow pozwalajace wczytac oraz wyswietlic wyrazenie zespolone w odpowiedni sposob
+  //Przeciazenia (zaprzyjaznione) operatorow pozwalajace wczytac oraz wyswietlic wyrazenie zespolone w odpowiedni sposob
   friend std::ostream & operator<< (std::ostream &stream , const Operator & ope);
   friend std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos);
   friend std::istream & operator >> (std::istream &stream, Operator &oper);
   friend std::istream & operator >> (std::istream &stream, WyrazenieZesp &WyrZ);
+  friend std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ);
 };
 
 // void Wyswietl(WyrazenieZesp  WyrZ);
@@ -41,7 +41,7 @@ WyrazenieZesp WczytajWyrz ();
 Operator WczytajWyrZsym ();
 //Prototyp funkcji ktora oblicza wynik wyrazenia zespolonego na podstawie znaku miedzy nimi
 LZespolona Oblicz(WyrazenieZesp  WyrZ);
-std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ);
+// std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ);
 
 
 #endif

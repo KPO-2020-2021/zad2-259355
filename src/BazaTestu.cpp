@@ -2,6 +2,7 @@
 #include <cstring>
 #include <cassert>
 #include "BazaTestu.hh"
+#include "Statystyki.hh"
 #include <fstream>
 #include <sstream>
 
@@ -147,13 +148,49 @@ bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu, WyrazenieZesp *wskWyrazeni
   ++wskBazaTestu->IndeksPytania;
   return true;
 }
-// bool PobierzPytaniePlik(WyrazenieZesp *wskWyrazenie){
-//   fstream uchwyt;
-//   string linia;
-//   getline(uchwyt, linia);
-//       std::istringstream in(linia);
-//       in >> *wskWyrazenie;
-//   if(linia == ""){
-//     uchwyt.close();}
-//   return true;
-// }
+
+string wybortestu(string wybor){
+  if(wybor == "latwy"){
+    string testl;
+    testl = "/home/adam/Programowanie_Obiektowe/zad2-259355/src/latwe.dat";
+    return testl;
+  }
+  else if (wybor == "trudny"){
+    string testt;
+    testt = "/home/adam/Programowanie_Obiektowe/zad2-259355/src/trudne.dat";
+    return testt;
+  }
+  return 0;
+}
+
+void tescik(WyrazenieZesp WyrZ_PytTest, Staty &Test) {
+  LZespolona Odp;
+  int i=0;
+    while (WyrZ_PytTest.Wyn != Odp && i<3){
+      cout << "Twoja odpowiedz: ";
+      cin >> Odp;
+      while(cin.fail() && i<3){
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cerr << "Blednie zapisana liczba zespolona" << endl;
+        if(i<2){
+        cout << "Ponownie wprowadz liczbe zespolona: ";
+        cin >> Odp;
+        i++;}
+        else{
+          cout << "Wykorzystales wszystkie szanse " << endl;
+          // cout << "Wynik to: " << WyrZ_PytTest.Wyn << endl;
+          // Test.neg++;
+        }
+      }
+        if(WyrZ_PytTest.Wyn == Odp){
+          cout << "Poprawna odpowiedz" << endl;
+          Test.popr +=1;
+          }
+        else {
+          cout << "Nieprawidłowy wynik " << endl;
+          cout << "Wynik to: " << WyrZ_PytTest.Wyn << endl;
+          Test.neg++;
+          i=3;}
+    }
+  }
