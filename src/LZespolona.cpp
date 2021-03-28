@@ -233,9 +233,7 @@ std::istream & operator>> (std::istream &stream,  LZespolona & cos){
             return stream;}
         return stream;}
     }
-    else if(stream.peek() == '+'){
-      stream>>tmp;
-      if(stream.peek() == 'i'){
+    else if(stream.peek() == 'i'){
         cos.re = 0;
         cos.im = 1;
         stream>>tmp;
@@ -246,7 +244,7 @@ std::istream & operator>> (std::istream &stream,  LZespolona & cos){
         if(!stream){
           stream.setstate(std::ios::failbit);
             return stream;}
-        return stream;}
+        return stream;
     }
     stream>>cos.re;
     if(!stream){
