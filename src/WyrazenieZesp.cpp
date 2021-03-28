@@ -99,7 +99,7 @@ std::istream & operator >> (std::istream &stream, Operator &op){
     return stream;
 }
 
-// Przeciazenie operatora przesuniecia bitowego w prawo pozwalajaca wczytac wyrazenie zespolone
+// // Przeciazenie operatora przesuniecia bitowego w prawo pozwalajaca wczytac wyrazenie zespolone
 std::istream & operator >> (std::istream &stream, WyrazenieZesp &WyrZ){
     //Po wczytaniu do strumienia danych za kazdym razem sprawdzamy czy wszystko poprawnie sie wczytalo
     stream >> WyrZ.Arg1;
@@ -119,6 +119,29 @@ std::istream & operator >> (std::istream &stream, WyrazenieZesp &WyrZ){
     stream.setstate(std::ios::failbit);
     throw 
     std::runtime_error("Blednie wczytana 2 liczba zespolona");
+      return stream;}
+    return stream;
+}
+
+std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ){
+    //Po wczytaniu do strumienia danych za kazdym razem sprawdzamy czy wszystko poprawnie sie wczytalo
+    stream >> WyrZ.Arg1;
+    if(stream.fail()){
+    stream.setstate(std::ios::failbit);
+    // throw 
+    // std::runtime_error("Blednie wczytana 1 liczba zespolona");
+      return stream;}
+    stream >> WyrZ.Op;
+    if(stream.fail()){
+    stream.setstate(std::ios::failbit);
+    // throw 
+    // std::runtime_error("Blednie wczytany operator");
+      return stream;}
+    stream >> WyrZ.Arg2;
+    if(stream.fail()){
+    stream.setstate(std::ios::failbit);
+    // throw 
+    // std::runtime_error("Blednie wczytana 2 liczba zespolona");
       return stream;}
     return stream;
 }
@@ -179,15 +202,15 @@ std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos){
     return stream;
 }
 
-//Przeciazenie bitowe przesuniecia w prawo dla wczytywania wyrazenia zespolonego z pliku 
-std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ){
-    string linia;
-    //Pobieranie po kolei linii z pliku oraz wczytanie ich jako wyrazenie zespolone
-    std::getline(stream, linia);
-    std::istringstream in(linia);
-    in >> WyrZ;
+// Przeciazenie bitowe przesuniecia w prawo dla wczytywania wyrazenia zespolonego z pliku 
+// std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ){
+//     string linia;
+//     //Pobieranie po kolei linii z pliku oraz wczytanie ich jako wyrazenie zespolone
+//     std::getline(stream, linia);
+//     std::istringstream in(linia);
+//     in >> WyrZ;
     
-    return stream;
-}
+//     return stream;
+// }
 
 

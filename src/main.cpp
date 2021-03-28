@@ -64,22 +64,23 @@ int main(int argc, char **argv)
   std::cout << "Prosze pamietac zeby nie dawac spacji miedzy cyfra a znakiem operacji" << endl;
   std::cout << "prosze wpisywac pelna liczbe zespolona np. (0+0i) brak ktorejs z czesci spowoduje blad" << endl << endl;
   std::ifstream plik(wybor);
+  
   while (!plik.eof()) {
-    //Gdy pojawi sie niespodziewany blad w ktoryms z wyrazen przechwytujemy go dajemy odpowiedni komunikat 
-    //I pomijamy bledne pytanie nie konczac dzialania programu 
-    try{
-      plik >> WyrZ_PytTest;
-      cout << "Podaj wynik operacji: ";
-      cout << WyrZ_PytTest << endl;
-    }
-    catch( std::runtime_error &e){
-      cerr << "invalid argument: " << e.what() << " idziemy dalej" << endl;
+    if(plik.eof())break;
+    plik >> WyrZ_PytTest;
+    if(plik.fail()){
+      plik.clear();
+      plik.ignore(256, '\n');
+      cout << "blad przy wczytywaniu" << endl << endl;
       continue;
     }
+    cout << "Podaj wynik operacji: ";
+    cout << WyrZ_PytTest << endl;
     WyrZ_PytTest.Wyn = Oblicz(WyrZ_PytTest);
     tescik(WyrZ_PytTest, Test);
     Test.lpyt +=1;
   }
+  plik.close();
   Wynikkon(Test);
   }
   else{

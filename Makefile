@@ -22,7 +22,7 @@ ${OBJ}:
 ${OBJ}/main.o: src/main.cpp inc/LZespolona.hh inc/BazaTestu.hh
 	g++ -c ${FLAGS} -o ${OBJ}/main.o src/main.cpp
 
-${OBJ}/Statystyki.o: src/Statystyki.cpp 
+${OBJ}/Statystyki.o: src/Statystyki.cpp inc/Statystyki.hh
 	g++ -c ${FLAGS} -o ${OBJ}/Statystyki.o src/Statystyki.cpp
 
 ${OBJ}/LZespolona.o: src/LZespolona.cpp inc/LZespolona.hh
@@ -36,7 +36,7 @@ ${OBJ}/WyrazenieZesp.o: src/WyrazenieZesp.cpp inc/WyrazenieZesp.hh\
                        inc/LZespolona.hh
 	g++ -c ${FLAGS} -o ${OBJ}/WyrazenieZesp.o src/WyrazenieZesp.cpp
 
-${TBIN}/test_1: ${TBIN} ${OBJ}/WyrazenieZesp.o ${OBJ}/LZespolona.o ${OBJ}/Statystyki.o
+${TBIN}/test_1: ${TBIN} ${OBJ}/WyrazenieZesp.o ${OBJ}/LZespolona.o ${OBJ}/Statystyki.o 
 	g++ -o ${TESTS}/bin/test_1 ${FLAGS} -I${TESTS}/doctest ${TESTS}/test1.cpp ${OBJ}/WyrazenieZesp.o ${OBJ}/LZespolona.o ${OBJ}/Statystyki.o
 
 ${TBIN}/test_2: ${TBIN} ${OBJ}/LZespolona.o

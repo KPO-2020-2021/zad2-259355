@@ -31,6 +31,9 @@ bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char*  sNazwaTestu );
 bool PobierzNastpnePytanie( BazaTestu  *wskBazaTestu,  WyrazenieZesp *wskWyr );
 
 // bool PobierzPytaniePlik(WyrazenieZesp *wskWyrazenie);
+//Funkcja wybierajaca odpowiednia sciezke do pliku
 string wybortestu(string wybor);
+//Funkcja wykonujaca test
 void tescik(WyrazenieZesp WyrZ_PytTest, Staty &Test);
+
 #endif

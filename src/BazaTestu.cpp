@@ -90,16 +90,10 @@ bool InicjalizujTest( BazaTestu  *wskBazaTestu, const char *sNazwaTestu )
 {
   fstream uchwyt;
   if (!strcmp(sNazwaTestu,"latwy")) {
-    // UstawTest(wskBazaTestu, "latwy.dat", 4);
-    // return true;
-    // std::ifstream plik("/home/adam/Programowanie_Obiektowe/zad2-259355/src/latwe.dat");
     UstawTest(wskBazaTestu,TestLatwy,sizeof(TestLatwy)/sizeof(WyrazenieZesp));
     return true;
   }
   else if (!strcmp(sNazwaTestu,"trudny")) {
-    // UstawTest(wskBazaTestu, "trudny.dat", 4);
-    // return true;    
-    // std::ifstream plik("/home/adam/Programowanie_Obiektowe/zad2-259355/src/trudne.dat");
     UstawTest(wskBazaTestu,TestTrudny,sizeof(TestTrudny)/sizeof(WyrazenieZesp));
     return true;
   }
@@ -169,6 +163,10 @@ void tescik(WyrazenieZesp WyrZ_PytTest, Staty &Test) {
     while (WyrZ_PytTest.Wyn != Odp && i<3){
       cout << "Twoja odpowiedz: ";
       cin >> Odp;
+      cout << Odp << endl;
+      cout << Odp.re << endl;
+      cout << Odp.im << endl;
+
       while(cin.fail() && i<3){
         cin.clear();
         cin.ignore(10000, '\n');

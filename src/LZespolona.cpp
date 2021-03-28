@@ -205,10 +205,106 @@ std::istream & operator>> (std::istream &stream,  LZespolona & cos){
         stream.setstate(std::ios::failbit);
         return stream;
     }
+    if(stream.peek() == 'i'){
+      cos.re = 0;
+      cos.im = 1;
+      stream>>tmp;
+      if(!stream){
+        stream.setstate(std::ios::failbit);
+        return stream;}
+      stream>>tmp;
+      if(!stream){
+        stream.setstate(std::ios::failbit);
+        return stream;}
+      return stream;
+    }
+    else if(stream.peek() == '-'){
+      stream>>tmp;
+      if(stream.peek() == 'i'){
+        cos.re = 0;
+        cos.im = -1;
+        stream>>tmp;
+        if(!stream){
+          stream.setstate(std::ios::failbit);
+            return stream;}
+        stream>>tmp;
+        if(!stream){
+          stream.setstate(std::ios::failbit);
+            return stream;}
+        return stream;}
+    }
+    else if(stream.peek() == '+'){
+      stream>>tmp;
+      if(stream.peek() == 'i'){
+        cos.re = 0;
+        cos.im = 1;
+        stream>>tmp;
+        if(!stream){
+          stream.setstate(std::ios::failbit);
+            return stream;}
+        stream>>tmp;
+        if(!stream){
+          stream.setstate(std::ios::failbit);
+            return stream;}
+        return stream;}
+    }
     stream>>cos.re;
     if(!stream){
     stream.setstate(std::ios::failbit);
       return stream;}
+    if(stream.peek() == ')'){
+      cos.im = 0;
+      stream>>tmp;
+      if(!stream){
+        stream.setstate(std::ios::failbit);
+        return stream;}
+      return stream;
+    }
+    else if(stream.peek() == 'i'){
+      cos.im = cos.re;
+      cos.re = 0;
+      stream>>tmp;
+      if(!stream){
+        stream.setstate(std::ios::failbit);
+        return stream;}
+      stream>>tmp;
+        if(!stream){
+        stream.setstate(std::ios::failbit);
+      return stream;}
+      return stream;
+      }
+      else if(stream.peek() == '-'){
+        stream.get();
+      if(stream.peek() == 'i'){
+        cos.im = -1;
+        stream>>tmp;
+        if(!stream){
+          stream.setstate(std::ios::failbit);
+            return stream;}
+        stream>>tmp;
+        if(!stream){
+          stream.setstate(std::ios::failbit);
+            return stream;}
+        return stream;
+      }
+      stream.unget();
+    }
+      else if(stream.peek() == '+'){
+          stream.get();
+        if(stream.peek() == 'i'){
+          cos.im = 1;
+          stream>>tmp;
+          if(!stream){
+            stream.setstate(std::ios::failbit);
+              return stream;}
+          stream>>tmp;
+          if(!stream){
+            stream.setstate(std::ios::failbit);
+              return stream;}
+          return stream;
+        }
+        stream.unget();
+      }
 
     stream>>cos.im;
     if(!stream){

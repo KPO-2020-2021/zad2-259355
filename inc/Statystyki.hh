@@ -2,9 +2,7 @@
 #define STATYSTYKA_HH
 
 using namespace std;
-#include "BazaTestu.hh"
-
-using namespace std;
+#include <iostream>
 
 //Struktura statystyki koncowej 
 struct Staty{

@@ -24,6 +24,7 @@ struct WyrazenieZesp {
   friend std::ostream & operator<< (std::ostream &stream , const Operator & ope);
   friend std::ostream & operator<< (std::ostream &stream , const WyrazenieZesp & cos);
   friend std::istream & operator >> (std::istream &stream, Operator &oper);
+  friend std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ);
   friend std::istream & operator >> (std::istream &stream, WyrazenieZesp &WyrZ);
   friend std::ifstream & operator >> (std::ifstream &stream, WyrazenieZesp &WyrZ);
 };

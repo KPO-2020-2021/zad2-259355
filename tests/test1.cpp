@@ -2,6 +2,7 @@
 #include "./doctest/doctest.h"
 #include "WyrazenieZesp.hh"
 #include "Statystyki.hh"
+#include "BazaTestu.hh"
 #include <string>
 #include <sstream>
 #include <iostream>
