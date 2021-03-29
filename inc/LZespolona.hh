@@ -24,15 +24,14 @@ class  LZespolona {
   LZespolona  operator - (LZespolona  &Skl1);
   LZespolona  operator * (LZespolona  &Skl1); 
   LZespolona  operator / (LZespolona  &Skl1);
-  LZespolona  operator / (double &t);
+  LZespolona  operator / (double t) const;
   friend bool operator != (LZespolona  Skl1,  LZespolona  Skl2);
   friend bool operator == (LZespolona  Skl1,  LZespolona  Skl2);
   friend std::ostream & operator<< (std::ostream & pom , const LZespolona & cos);
   friend std::istream & operator>> (std::istream &pom,  LZespolona & cos);
-  friend LZespolona Sprzezenie(LZespolona &Skl2);
-  friend double Modul2(LZespolona Skl2);
+  LZespolona Sprzezenie();
+  double Modul2();
   friend bool compare(LZespolona tmp);
-
 };
 
 //Takie tam
@@ -58,5 +57,9 @@ LZespolona Wczytaj();
 // std::ostream & operator<< (std::ostream & pom , const LZespolona & cos);
 // std::istream & operator>> (std::istream &pom,  LZespolona & cos);
 
+
+void arg(LZespolona z);
+LZespolona operator += (LZespolona &Arg1, LZespolona const &Arg2);
+LZespolona operator /=(LZespolona &Arg1, LZespolona const &Arg2);
 
 #endif

@@ -7,6 +7,7 @@
 #define MIN_DIFF 0.01
 
 
+
 /*!
  * Realizuje dodanie dwoch liczb zespolonych.
  * Argumenty:
@@ -59,18 +60,18 @@ LZespolona LZespolona::operator* (LZespolona  &Skl1)
 }
 
 //Funkcja wykonujaca sprzezenie liczby zespolonej
-LZespolona Sprzezenie(LZespolona &Skl2){
+LZespolona LZespolona::Sprzezenie(){
   
-  Skl2.im *= (-1);
-  return Skl2;
+  this->im *= (-1);
+  return *this;
 }
 
 //Funkcja obliczajaca modul danej liczby zespolonej 
 //poniewaz chodzi nam o kwadrat modulu nie pierwiastkujemy go dodatkowo
-double Modul2(LZespolona Skl2){
+double LZespolona::Modul2(){
   double modul;
 
-  modul = (pow(Skl2.re, 2) + pow(Skl2.im, 2));
+  modul = (pow(this->re, 2) + pow(this->im, 2));
 
   return modul;
 }
@@ -84,17 +85,16 @@ double Modul2(LZespolona Skl2){
  *    Iloraz dwoch skladnikow przekazanych jako parametry.
  */
 
+
+
 LZespolona LZespolona::operator/ (LZespolona  &Skl2)
 {
   LZespolona  wynik;
-  LZespolona  temp;
-  Sprzezenie(Skl2);
+  
+  Skl2.Sprzezenie();
 
   if(Skl2.im != 0 || Skl2.re != 0){
-  temp.re = (this->re * Skl2.re) + ((-1)*(this->im * Skl2.im));
-  temp.im = ((this->re * Skl2.im) + (Skl2.re * this->im));
-  wynik.re = temp.re / Modul2(Skl2);
-  wynik.im = temp.im / Modul2(Skl2);}
+  wynik = (*this * Skl2) / Skl2.Modul2();}
   else {
     throw 
     std::invalid_argument("Dzielenie przez zero");
@@ -102,7 +102,7 @@ LZespolona LZespolona::operator/ (LZespolona  &Skl2)
   return wynik;
 }
 
-LZespolona  LZespolona::operator / (double &t){
+LZespolona  LZespolona::operator / (double t) const{
   LZespolona wynik;
 
   if(t != 0){
@@ -323,4 +323,54 @@ std::istream & operator>> (std::istream &stream,  LZespolona & cos){
     return stream;
 }
 
+void arg(LZespolona z)
+{
+  double result;
+  if(z.re != 0){
+    if(z.re > 0){
+      result = atan2(z.im,z.re);
+          cout << "argument rowny: " << result << endl;
+    }
+    else{
+      result = atan2(z.im,z.re) + 3.14;
+          cout << "argument rowny: " << result << endl;
+    }
+  }
+  else if(z.re == 0){
+    if(z.im > 0){
+      result = 0.5*3.14;
+          cout << "argument rowny: " << result << endl;
+    }
+    else{
+      result = -0.5*3.14;
+         cout << "argument rowny: " << result << endl;
+    }
+  }
+  else if(z.re == 0 && z.im == 0){
+    cout << "argument nieokreslony" << endl;
+  }
+}
 
+LZespolona operator += (LZespolona &Arg1, LZespolona const &Arg2){
+
+    Arg1.re += Arg2.re;
+    Arg1.im += Arg2.im;
+
+    return Arg1;
+}
+
+
+LZespolona operator /= (LZespolona &Arg1, LZespolona const &Arg2){
+
+  LZespolona copy;
+  copy = Arg2;
+  copy.Sprzezenie();
+  if(copy.im != 0 && copy.re != 0){
+  Arg1 = (Arg1 * copy) / copy.Modul2();
+  return Arg1;}
+  else{
+    throw 
+    std::invalid_argument("Dzielenie przez zero");
+  }
+  return Arg1;
+}

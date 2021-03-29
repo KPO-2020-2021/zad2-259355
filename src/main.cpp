@@ -70,6 +70,9 @@ int main(int argc, char **argv)
 
     if(plik.eof())break;
     plik >> WyrZ_PytTest;
+    arg(WyrZ_PytTest.Arg1);
+    // WyrZ_PytTest.Arg1 += WyrZ_PytTest.Arg2;
+    // cout << WyrZ_PytTest.Arg1 << endl;
     if(plik.fail()){
       plik.clear();
       plik.ignore(256, '\n');

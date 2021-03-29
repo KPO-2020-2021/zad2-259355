@@ -243,7 +243,7 @@ TEST_CASE("Test LZespolona Sprzezenie dla czesci urojonej rownej 0"){
     LZespolona x;
     x.re = 1;
     x.im = 0;
-    Sprzezenie(x);
+    x.Sprzezenie();
 
     CHECK(x.im == 0);
 }
@@ -252,9 +252,67 @@ TEST_CASE("Test LZespolona Sprzezenie dla czesci urojonej niezerowej"){
     LZespolona x;
     x.re = 1;
     x.im = 3;
-    Sprzezenie(x);
+    x.Sprzezenie();
 
     CHECK(x.im == -3);
+}
+
+// TEST_CASE("Test LZespolona dzielenie przez skalar 1") {
+//     LZespolona x;
+    
+//     x.re = 10;
+//     x.im = 10;
+//     double result = 0.7853981634; 
+    
+//     CHECK(atan2(x.re,x.im) == result);
+// }
+
+TEST_CASE("Test LZespolona operatora += "){
+    LZespolona x,y,z;
+    x.re = 10;
+    x.im = 10;
+    y.re = 13;
+    y.im = 20;
+    x += y;
+    z.re = 23;
+    z.im = 30;
+    CHECK(z == x);
+}
+
+TEST_CASE("Test LZespolona operatora += przyblizenie"){
+    LZespolona x,y,z;
+    x.re = 10.006;
+    x.im = 10.003;
+    y.re = 13.576;
+    y.im = 20.078;
+    x += y;
+    z.re = 23.59;
+    z.im = 30.08;
+    CHECK(z == x);
+}
+
+TEST_CASE("Test LZespolona operatora /= "){
+    LZespolona x,y,z;
+     x.re = 1;
+    x.im = 1;
+
+    y.re = 1;
+    y.im = 1;
+    x /= y;
+    z.re = 1;
+    z.im = 0;
+    CHECK(z == x);
+}
+
+TEST_CASE("Test LZespolona operatora /= "){
+    LZespolona x,y;
+     x.re = 1;
+    x.im = 1;
+
+    y.re = 0;
+    y.im = 0;
+    
+    WARN_THROWS(x /= y);
 }
 
 TEST_CASE("Test modulu z liczby zespolonej"){
@@ -263,7 +321,7 @@ TEST_CASE("Test modulu z liczby zespolonej"){
     x.re = 2;
     x.im = 3;
 
-    z = Modul2(x);
+    z = x.Modul2();
 
     y = 13;
 
