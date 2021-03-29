@@ -323,32 +323,37 @@ std::istream & operator>> (std::istream &stream,  LZespolona & cos){
     return stream;
 }
 
-void arg(LZespolona z)
+double arg(LZespolona z)
 {
   double result;
   if(z.re != 0){
     if(z.re > 0){
       result = atan2(z.im,z.re);
-          cout << "argument rowny: " << result << endl;
+      cout << "argument rowny: " << result << endl;
+      return result;
     }
     else{
       result = atan2(z.im,z.re) + 3.14;
-          cout << "argument rowny: " << result << endl;
+      cout << "argument rowny: " << result << endl;
+      return result;
     }
   }
   else if(z.re == 0){
     if(z.im > 0){
       result = 0.5*3.14;
-          cout << "argument rowny: " << result << endl;
+      cout << "argument rowny: " << result << endl;
+      return result;
     }
     else{
       result = -0.5*3.14;
-         cout << "argument rowny: " << result << endl;
+      cout << "argument rowny: " << result << endl;
+      return result;
     }
   }
   else if(z.re == 0 && z.im == 0){
     cout << "argument nieokreslony" << endl;
   }
+  return 0;
 }
 
 LZespolona operator += (LZespolona &Arg1, LZespolona const &Arg2){

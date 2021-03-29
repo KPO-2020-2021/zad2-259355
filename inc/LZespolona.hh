@@ -20,6 +20,7 @@ class  LZespolona {
   public:
   double   re;    /*! Pole repezentuje czesc rzeczywista. */
   double   im;    /*! Pole repezentuje czesc urojona. */
+  double arg;
   LZespolona  operator + (LZespolona  &Skl1);
   LZespolona  operator - (LZespolona  &Skl1);
   LZespolona  operator * (LZespolona  &Skl1); 
@@ -58,7 +59,7 @@ LZespolona Wczytaj();
 // std::istream & operator>> (std::istream &pom,  LZespolona & cos);
 
 
-void arg(LZespolona z);
+double arg(LZespolona z);
 LZespolona operator += (LZespolona &Arg1, LZespolona const &Arg2);
 LZespolona operator /=(LZespolona &Arg1, LZespolona const &Arg2);
 

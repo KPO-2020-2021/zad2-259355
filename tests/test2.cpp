@@ -257,15 +257,16 @@ TEST_CASE("Test LZespolona Sprzezenie dla czesci urojonej niezerowej"){
     CHECK(x.im == -3);
 }
 
-// TEST_CASE("Test LZespolona dzielenie przez skalar 1") {
-//     LZespolona x;
-    
-//     x.re = 10;
-//     x.im = 10;
-//     double result = 0.7853981634; 
-    
-//     CHECK(atan2(x.re,x.im) == result);
-// }
+TEST_CASE("Test LZespolona sprawdzenie wartosci argumentu ") {
+    LZespolona x;
+    double tmp;
+    x.re = 10;
+    x.im = 10;
+    double result = 0.7853981634; 
+    tmp = arg(x);
+
+    CHECK(abs(tmp - result) <= 0.0000000001 );
+}
 
 TEST_CASE("Test LZespolona operatora += "){
     LZespolona x,y,z;
