@@ -152,7 +152,7 @@ std::ostream & operator<< (std::ostream &stream , const LZespolona & cos){
       stream << "(" << std::fixed << cos.re << std::showpos << ")" << std::noshowpos;
     }
     else if (cos.im == 0 && cos.re ==0){
-      stream << cos.re;
+      stream << "(" << cos.re << ")";
     }
     else if(cos.im == 1 && cos.re != 0){
       stream << "(" << std::fixed << cos.re << std::showpos << "+i)" << std::noshowpos;

@@ -5,6 +5,7 @@
 #include <limits>
 #include <fstream>
 #include <stdexcept>
+#include <cstddef>
 
 
 using namespace std;
@@ -66,6 +67,7 @@ int main(int argc, char **argv)
   std::ifstream plik(wybor);
   
   while (!plik.eof()) {
+
     if(plik.eof())break;
     plik >> WyrZ_PytTest;
     if(plik.fail()){

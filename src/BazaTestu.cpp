@@ -163,9 +163,7 @@ void tescik(WyrazenieZesp WyrZ_PytTest, Staty &Test) {
     while (WyrZ_PytTest.Wyn != Odp && i<3){
       cout << "Twoja odpowiedz: ";
       cin >> Odp;
-      cout << Odp << endl;
-      cout << Odp.re << endl;
-      cout << Odp.im << endl;
+      
 
       while(cin.fail() && i<3){
         cin.clear();
